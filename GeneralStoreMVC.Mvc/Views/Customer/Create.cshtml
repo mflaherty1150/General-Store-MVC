@@ -1,0 +1,39 @@
+@model GeneralStoreMVC.Models.CustomerModels.CustomerCreate
+
+@{
+    ViewData["Title"] = "Create A Customer";
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<h1>Create A Customer</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="Create">
+            <div asp-validation-summary = "ModelOnly" class = "text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input type ="text" asp-for="Name" class="form-control" placeholder="Bruce Wayne" />
+                <span asp-validation-for= "Name" class = "text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input type="email" asp-for="Email" class="form-control" placeholder="example@elevenfifty.org" />
+                <span asp-validation-for="Email" class = "text-danger"></span>
+            </div>
+            <br />
+            <hr />   
+            <div class = "form-group">
+                <input type = "submit" value = "Create" class="btn btn-warning" />
+            </div>
+        </form>
+        <br />
+        <div>
+            <a asp-action = "Index" class="text-dark">Back To Customer List</a>
+        </div>
+    </div>
+</div>

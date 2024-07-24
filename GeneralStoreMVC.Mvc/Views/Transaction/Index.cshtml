@@ -1,0 +1,54 @@
+@model IEnumerable<GeneralStoreMVC.Models.TransactionModels.TransactionIndex>
+
+@{
+    ViewData["Title"] = "Transaction Index";
+}
+
+<h1 class="text-center">Review Transactions</h1>
+
+<p>
+    <a asp-action="Create" class="text-warning">Add a New Transaction</a>
+</p>
+<table class="table table-striped-colums table-dark table-hover table-bordered border-danger">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                <a asp-controller="Transaction" asp-action="Edit" asp-route-id="@item.Id" class="text-danger">Edit</a> |
+                <a asp-controller="Transaction" asp-action="Details" asp-route-id="@item.Id" class="text-warning">Details</a> |
+                <a asp-controller="Transaction" asp-action="CustomerTransactionDetails" asp-route-id="@item.CustomerId" class="text-warning">All Customer Transactions</a> |
+                <a asp-controller="Transaction" asp-action="Delete" asp-route-id="@item.Id" class="text-success">Delete</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
